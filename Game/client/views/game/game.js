@@ -20,7 +20,7 @@ Template.game.rendered = function() {
         });
         if (isAlive) {
             Results.insert({
-                name: Meteor.user().profile.name,
+                name: Meteor.user().username,
                 points: points,
                 date: new Date()
             });
@@ -110,7 +110,7 @@ Template.game.rendered = function() {
         }), statsContainer);
 
         var coins = stage.insert(new Q.UI.Text({
-            label: "Points: 0",
+            label: "Points: " + player.p.coins,
             color: "white",
             x: 100,
             y: 0

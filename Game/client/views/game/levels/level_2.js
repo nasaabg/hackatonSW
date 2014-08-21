@@ -26,7 +26,7 @@ $(document).ready(function(){
         player.p.y = level2start.y;
 
         stage.insert(player);
-        //stage.loadAssets(level2Assets);
+        stage.loadAssets(level2Assets);
         stage.add("viewport").follow(player, {
             x: true,
             y: true
