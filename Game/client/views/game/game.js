@@ -25,6 +25,7 @@ Template.game.rendered = function() {
                 date: new Date()
             });
             isAlive = false;
+            level = 1;
         }
     }
     nextLevel = function(points) {
