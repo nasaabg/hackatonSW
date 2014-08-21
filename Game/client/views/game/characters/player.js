@@ -27,6 +27,8 @@ player = function(){
                     }
                 });
             });
+
+            this.beer_mode();
         },
         step: function(dt) {
             if (Q.inputs['left'] && this.p.direction == 'right') {
@@ -56,6 +58,11 @@ player = function(){
                 this.p.x = playerStart.x;
                 this.p.y = playerStart.y;
             }
+        }, 
+        beer_mode: function() {
+            this.p.scale = 2;
+            this.p.jumpSpeed = -600;
+            this.p.vx = -100;
 
         }
     });
