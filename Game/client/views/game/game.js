@@ -36,8 +36,8 @@ Template.game.rendered = function() {
         levelLoaded = true;
         }
     }
-    Q = Quintus()
-        .include("Sprites, Scenes, Input, 2D, Touch, UI")
+    Q = Quintus({ audioSupported: [ 'wav','mp3' ] })
+        .include("Sprites, Scenes, Input, 2D, Touch, UI, Audio").enableSound()
         .setup("game", {
             width: w,
             height: h
@@ -52,7 +52,8 @@ Template.game.rendered = function() {
         Q.stageScene("level1");
         Q.stageScene("gameStats", 1);
     });
-
+    var snd = new Audio("sounds/mario.mp3"); // buffers automatically when created
+    snd.play();
     level1();
     level2();
 
