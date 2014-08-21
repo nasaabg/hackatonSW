@@ -33,6 +33,7 @@ player = function(){
                 this.p.flip = false;
             }
             
+            
         },
         damage: function() {
             //only damage if not in "invincible" mode, otherwise beign next to an enemy takes all the lives inmediatly
