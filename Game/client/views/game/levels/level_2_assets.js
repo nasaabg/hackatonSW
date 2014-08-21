@@ -12,8 +12,8 @@ xPosition = function(level) {
 
 level2Assets = [
     ["Tower", {
-        x: xPosition(50),
-        y: yPosition(4)
+        x: xPosition(15),
+        y: yPosition(1)
     }],
     ["Enemy", {
         x: xPosition(3),

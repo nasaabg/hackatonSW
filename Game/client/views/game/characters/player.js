@@ -8,6 +8,7 @@ player = function(){
                 jumpSpeed: -500,
                 lives: 3,
                 coins: 0,
+                scale: 0.4,
                 beer_mode: {
                     active: false,
                     max_scale: 1.5,
