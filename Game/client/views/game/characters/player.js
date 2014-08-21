@@ -17,12 +17,9 @@ player = function(){
                     this.p.coins += 5;
                     var coinsLabel = Q("UI.Text", 1).items[1];
                     coinsLabel.p.label = 'Points: ' + this.p.coins;
-
                 }
                 this.on("hit.sprite", function(collision) {
                     if (collision.obj.isA("Tower")) {
-                        this.destroy();
-                        level += 1;
                         nextLevel(this.p.coins);
                     }
                 });
@@ -37,10 +34,7 @@ player = function(){
             if (Q.inputs['right'] && this.p.direction == 'left') {
                 this.p.flip = false;
             }
-            if (this.p.y > h) {
-                this.destroy();
-                gameOver(this.p.coins);
-            }
+            
         },
         damage: function() {
             //only damage if not in "invincible" mode, otherwise beign next to an enemy takes all the lives inmediatly
