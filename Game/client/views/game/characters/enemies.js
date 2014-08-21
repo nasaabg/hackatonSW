@@ -3,7 +3,8 @@ enemy = function(){
         init: function(p) {
             this._super(p, {
                 asset: "enemy.png",
-                vx: 100
+                vx: 100,
+                scale: 0.5
             });
             this.add('2d, aiBounce');
 
