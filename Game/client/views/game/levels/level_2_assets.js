@@ -32,12 +32,36 @@ level2Assets = [
         y: yPosition(3)
     }],
     ["Coin", {
-        x: xPosition(5),
+        x: xPosition(12),
+        y: yPosition(4)
+    }],
+    ["Coin", {
+        x: xPosition(13),
+        y: yPosition(5)
+    }],
+    ["Coin", {
+        x: xPosition(17),
+        y: yPosition(7)
+    }],
+    ["Coin", {
+        x: xPosition(22),
+        y: yPosition(8)
+    }],
+    ["Coin", {
+        x: xPosition(24),
+        y: yPosition(8)
+    }],
+    ["Coin", {
+        x: xPosition(21),
+        y: yPosition(3)
+    }],
+    ["Coin", {
+        x: xPosition(9),
         y: yPosition(2)
     }],
     ["Coin", {
-        x: xPosition(6),
-        y: yPosition(2)
+        x: xPosition(20),
+        y: yPosition(3)
     }],
     ["Coin", {
         x: xPosition(11),
