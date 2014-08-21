@@ -44,7 +44,7 @@ Template.game.rendered = function() {
         }).controls().touch();
 
     //load assets
-    Q.load("tiles_map.png, player.png, enemy.png, cup.png, coin.png, level1.tmx, level2.tmx", function() {
+    Q.load("tiles_map.png, player.png, enemy.png, cup.png, coin.png, beer.png, level1.tmx, level2.tmx", function() {
         Q.sheet("tiles", "tiles_map.png", {
             tilew: 70,
             tileh: 70
@@ -141,5 +141,5 @@ Template.game.rendered = function() {
 
     coins();
 
-    beers();
+    beer();
 };

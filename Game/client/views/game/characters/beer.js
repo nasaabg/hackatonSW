@@ -1,4 +1,4 @@
-beers = function(){
+beer = function(){
 	Q.Sprite.extend("Beer", {
         init: function(p) {
             this._super(p, {

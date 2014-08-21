@@ -11,7 +11,7 @@ player = function(){
                 scale: 0.4,
                 beer_mode: {
                     active: false,
-                    max_scale: 1.5,
+                    max_scale: 0.8,
                     inc_scale_interval: false,
                     dec_scale_interval: false,
                     inc_scale: function(){
@@ -21,12 +21,12 @@ player = function(){
                             player.p.beer_mode.inc_scale_interval = 0;
                     },
                     dec_scale: function(){
-                        if (player.p.scale > 1)
+                        if (player.p.scale > 0.4)
                             player.p.scale -= 0.1;
                         else
                             player.p.beer_mode.dec_scale_interval = 0;
                     },
-                    length: 4000
+                    length: 8000
                 },
             });
             this.add('2d, platformerControls');
@@ -37,6 +37,10 @@ player = function(){
                     this.p.coins += 5;
                     var coinsLabel = Q("UI.Text", 1).items[1];
                     coinsLabel.p.label = 'Points: ' + this.p.coins;
+                }
+                if (collision.obj.isA("Beer")) {
+                    collision.obj.destroy();
+                    player.beer_mode_on();
                 }
                 this.on("hit.sprite", function(collision) {
                     if (collision.obj.isA("Tower")) {
@@ -103,7 +107,7 @@ function inc_scale() {
 }
 
 function dec_scale() {
-    if (player.p.scale > 1)
+    if (player.p.scale > 0.4)
         player.p.scale -= 0.1;
     else
     {
