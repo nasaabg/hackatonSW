@@ -1,4 +1,8 @@
 $(document).ready(function(){
+    level2start = {
+        x: 100,
+        y: 500,
+    }
     level2 = function(){
     Q.scene("level2", function(stage) {
         st = stage;
@@ -18,7 +22,9 @@ $(document).ready(function(){
             tileW: 70,
             tileH: 70
         }));
-        player = new Q.Player()
+        player.p.x = level2start.x;
+        player.p.y = level2start.y;
+
         stage.insert(player);
         stage.loadAssets(levelAssets);
         stage.add("viewport").follow(player, {
@@ -30,6 +36,7 @@ $(document).ready(function(){
             minY: 0,
             maxY: background.p.h
         });
+        Meteor.setTimeout(function(){levelLoaded = false;},2000);
     });
 }
 });
