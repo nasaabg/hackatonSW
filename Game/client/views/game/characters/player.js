@@ -7,7 +7,26 @@ player = function(){
                 y: playerStart.y,
                 jumpSpeed: -500,
                 lives: 3,
-                coins: 0
+                coins: 0,
+                beer_mode: {
+                    active: false,
+                    max_scale: 2,
+                    inc_scale_interval: false,
+                    dec_scale_interval: false,
+                    inc_scale: function(){
+                        if (player.p.scale <= player.p.beer_mode.max_scale)
+                            player.p.scale += 0.1;
+                        else
+                            player.p.beer_mode.inc_scale_interval = 0;
+                    },
+                    dec_scale: function(){
+                        if (player.p.scale > 1)
+                            player.p.scale -= 0.1;
+                        else
+                            player.p.beer_mode.dec_scale_interval = 0;
+                    },
+                    length: 4000
+                },
             });
             this.add('2d, platformerControls');
 
@@ -25,7 +44,6 @@ player = function(){
                 });
             });
 
-            this.beer_mode();
         },
         step: function(dt) {
             if (Q.inputs['left'] && this.p.direction == 'right') {
@@ -53,11 +71,38 @@ player = function(){
                 this.p.y = playerStart.y;
             }
         }, 
-        beer_mode: function() {
-            this.p.scale = 2;
-            this.p.jumpSpeed = -600;
-            this.p.vx = -100;
-
+        beer_mode_on: function() {
+            this.p.beer_mode.active = true;
+            this.p.jumpSpeed = -650;
+            this.p.scale = 1;
+            this.p.beer_mode.inc_scale_interval = Meteor.setInterval(inc_scale, 100);
+            setTimeout(function(){
+                player.p.beer_mode.dec_scale_interval = Meteor.setInterval(dec_scale, 100);
+            }, this.p.beer_mode.length);
+        },
+        beer_mode_off: function() {
+            this.p.beer_mode.active = false;
+            this.p.jumpSpeed = -500;
+            this.p.scale = 1;
         }
     });
+}
+
+
+
+function inc_scale() {
+    if (player.p.scale <= player.p.beer_mode.max_scale)
+        player.p.scale += 0.1;
+    else
+        clearTimeout(player.p.beer_mode.inc_scale_interval);
+}
+
+function dec_scale() {
+    if (player.p.scale > 1)
+        player.p.scale -= 0.1;
+    else
+    {
+        clearTimeout(player.p.beer_mode.dec_scale_interval);
+        player.beer_mode_off();
+    }
 }
