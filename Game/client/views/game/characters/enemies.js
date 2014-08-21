@@ -33,7 +33,6 @@ enemy = function(){
             }
             if(this.p.y > 3000){
                 this.destroy();
-                 gameOver(this.p.coins);
             }           
         },
     });
