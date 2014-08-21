@@ -8,10 +8,9 @@ Router.map(function() {
     });
     this.route('game', {
         onBeforeAction: function(pause) {
-            if (!Meteor.user()) {
-
+            if(!Meteor.loggingIn() && !Meteor.user()){
                 alert("Zaloguj się!");
-                pause();
+                pause();   
             }
         }
     });
