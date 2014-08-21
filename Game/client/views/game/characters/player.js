@@ -44,7 +44,12 @@ player = function(){
                 }
                 this.on("hit.sprite", function(collision) {
                     if (collision.obj.isA("Tower")) {
-                        nextLevel(this.p.coins);
+                        if(level == 2)
+                            nextLevel(this.p.coins);
+                        else{
+                            level = 1; 
+                            gameCompleated(this.p.coins);
+                        }
                     }
                 });
             });

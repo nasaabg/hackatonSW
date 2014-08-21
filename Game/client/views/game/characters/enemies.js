@@ -11,11 +11,14 @@ enemy = function(){
             this.on("bump.left,bump.right,bump.bottom", function(collision) {
                 if (collision.obj.isA("Player")) {
                     collision.obj.damage();
+                    var snd = new Audio("sounds/roar.mp3"); // buffers automatically when created
+                    snd.loop = false;
+                    snd.play();
                 }
             });
 
             this.on("bump.top", function(collision) {
-                if (collision.obj.isA("Player")) {
+                if (collision.obj.isA("Player")) {         
                     this.destroy();
                     collision.obj.p.vy = -300;
                     collision.obj.p.coins += 1;
