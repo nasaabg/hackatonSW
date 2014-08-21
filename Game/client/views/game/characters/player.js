@@ -17,12 +17,9 @@ player = function(){
                     this.p.coins += 5;
                     var coinsLabel = Q("UI.Text", 1).items[1];
                     coinsLabel.p.label = 'Points: ' + this.p.coins;
-                    nextLevel(this.p.coins);
                 }
                 this.on("hit.sprite", function(collision) {
                     if (collision.obj.isA("Tower")) {
-                        level += 1;
-
                         nextLevel(this.p.coins);
                     }
                 });
