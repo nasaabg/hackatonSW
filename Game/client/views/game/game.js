@@ -139,4 +139,5 @@ Template.game.rendered = function() {
 
     coins();
 
+    beers();
 };

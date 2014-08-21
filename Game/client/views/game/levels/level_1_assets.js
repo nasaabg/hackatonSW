@@ -90,5 +90,9 @@ level1Assets = [
     ["Coin", {
         x: xPosition(53),
         y: yPosition(3)
-    }]
+    }],
+    ["Beer", {
+        x: xPosition(19),
+        y: yPosition(3)
+    }]    
 ];
