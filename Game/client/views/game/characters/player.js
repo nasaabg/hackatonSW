@@ -10,7 +10,7 @@ player = function(){
                 coins: 0,
                 beer_mode: {
                     active: false,
-                    max_scale: 2,
+                    max_scale: 1.5,
                     inc_scale_interval: false,
                     dec_scale_interval: false,
                     inc_scale: function(){
@@ -52,6 +52,10 @@ player = function(){
             if (Q.inputs['right'] && this.p.direction == 'left') {
                 this.p.flip = false;
             }
+            if(this.p.y > 3000){
+                this.destroy();
+                 gameOver(this.p.coins);
+            }
             
         },
         damage: function() {
@@ -74,7 +78,7 @@ player = function(){
         beer_mode_on: function() {
             this.p.beer_mode.active = true;
             this.p.jumpSpeed = -650;
-            this.p.scale = 1;
+            this.p.scale = 0.4;
             this.p.beer_mode.inc_scale_interval = Meteor.setInterval(inc_scale, 100);
             setTimeout(function(){
                 player.p.beer_mode.dec_scale_interval = Meteor.setInterval(dec_scale, 100);
@@ -83,7 +87,7 @@ player = function(){
         beer_mode_off: function() {
             this.p.beer_mode.active = false;
             this.p.jumpSpeed = -500;
-            this.p.scale = 1;
+            this.p.scale = 0.4;
         }
     });
 }
