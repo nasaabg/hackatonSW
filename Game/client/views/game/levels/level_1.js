@@ -20,7 +20,7 @@ $(document).ready(function(){
         }));
         player = new Q.Player()
         stage.insert(player);
-        stage.loadAssets(levelAssets);
+        stage.loadAssets(level1Assets);
         stage.add("viewport").follow(player, {
             x: true,
             y: true
