@@ -1,0 +1,58 @@
+html {
+    height: 100%;
+}
+
+body{
+	height: 100%;
+	width: 100%;
+	margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(top,  #aaffff 0%, #ffffff 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#aaffff), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #aaffff 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #aaffff 0%,#ffffff 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #aaffff 0%,#ffffff 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #aaffff 0%,#ffffff 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aaffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */		
+}
+
+h1,h2,h3,h4{
+	text-align: center;
+}
+
+h1{
+	font-family: 'Chewy', cursive;
+	font-size: 60px;
+}
+
+.header{
+	margin-bottom: 40px;
+}
+#game{
+	margin: 20px;
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+	border-radius: 4px;
+}
+
+#rank{
+	height: 300px;
+	overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}

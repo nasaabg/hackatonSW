@@ -1,0 +1,24 @@
+<template name="results">
+	<div class="container">
+		<div class="row">
+		  <div class="col-md-4 col-md-offset-4">
+		  	<h2>Scores table:</h2>
+		  	<div id="rank">
+					<table class="table table-striped">
+					  <tr>
+					  	<th><h4>Name:</h4></th>
+					  	<th><h4>Points:</h4></th>
+					  </tr>
+						{{#each results}}
+							<tr>
+								<td><h4>{{name}}</h4></td>
+								<td><h4>{{points}}</h4></td>
+							</tr>
+						{{/each}}
+					</table>
+		  	</div>
+		  	<a href="{{pathFor 'game'}}" class="btn btn-primary btn-lg">Restart game!</a>
+		  </div>
+		</div>
+	</div>
+</template>
