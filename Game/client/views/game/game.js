@@ -8,7 +8,12 @@ Template.game.rendered = function() {
         x: 100,
         y: 100
     };
-
+    bestRes = Results.find({},{sort:{points:-1}}).fetch()[1];
+        if(bestRes){
+            bestRes = bestRes.points;
+        }else{
+            bestRes = 0;
+        }
     gameOver = function(points) {
         Q.stageScene("endGame", 1, {
             label: "Game Over!\nYour score: " + points
@@ -100,21 +105,27 @@ Template.game.rendered = function() {
         var lives = stage.insert(new Q.UI.Text({
             label: "Lives: 3",
             color: "white",
-            x: -300,
+            x: -100,
             y: 0
         }), statsContainer);
 
         var coins = stage.insert(new Q.UI.Text({
             label: "Points: 0",
             color: "white",
-            x: 300,
+            x: 100,
             y: 0
         }), statsContainer);
 
         var name = stage.insert(new Q.UI.Text({
-            label: Meteor.user().profile.name, //User name
+            label: Meteor.user().username,
             color: "white",
-            x: 0,
+            x: -300,
+            y: 0
+        }), statsContainer);
+        var bestScore = stage.insert(new Q.UI.Text({
+            label: "Best Result: " + bestRes,
+            color: "white",
+            x: 300,
             y: 0
         }), statsContainer);
 
@@ -127,5 +138,5 @@ Template.game.rendered = function() {
     enemy();
 
     coins();
-};
 
+};

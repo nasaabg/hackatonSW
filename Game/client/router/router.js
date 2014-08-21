@@ -15,3 +15,7 @@ Router.map(function() {
     });
     this.route('results');
 });
+
+Accounts.ui.config({
+  passwordSignupFields: 'USERNAME_ONLY'
+});
