@@ -32,10 +32,7 @@ player = function(){
             if (Q.inputs['right'] && this.p.direction == 'left') {
                 this.p.flip = false;
             }
-            if (this.p.y > h) {
-                this.destroy();
-                gameOver(this.p.coins);
-            }
+            
         },
         damage: function() {
             //only damage if not in "invincible" mode, otherwise beign next to an enemy takes all the lives inmediatly
