@@ -4,6 +4,7 @@ Template.game.rendered = function() {
     h = $("#game").attr("height");
     isAlive = true;
     levelLoaded = false;
+    gameEnded = false;
     playerStart = {
         x: 100,
         y: 100
@@ -36,6 +37,20 @@ Template.game.rendered = function() {
         levelLoaded = true;
         }
     }
+    gameCompleated = function(points){
+        Q.stageScene("endGame", 1, {
+            label: "Win!\nYour score: " + points
+        });
+        if (!gameEnded) {
+            Results.insert({
+                name: Meteor.user().username,
+                points: points,
+                date: new Date()
+            });
+            isAlive = true;
+            level = 1;
+        }
+    }
     Q = Quintus({ audioSupported: [ 'wav','mp3' ] })
         .include("Sprites, Scenes, Input, 2D, Touch, UI, Audio").enableSound()
         .setup("game", {
@@ -53,6 +68,7 @@ Template.game.rendered = function() {
         Q.stageScene("gameStats", 1);
     });
     var snd = new Audio("sounds/mario.mp3"); // buffers automatically when created
+    snd.loop = true;
     snd.play();
     level1();
     level2();
