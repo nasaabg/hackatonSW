@@ -7,7 +7,8 @@ player = function(){
                 y: playerStart.y,
                 jumpSpeed: -500,
                 lives: 3,
-                coins: 0
+                coins: 0,
+                scale: 0.4
             });
             this.add('2d, platformerControls');
 
