@@ -23,9 +23,8 @@ Template.game.rendered = function() {
     }
     nextLevel = function(points) {
         level += 1;
-        Q.stageScene("nextLevel", 1, {
-            label: "Level Compleated!\nYour score: " + points
-        });
+        Q.stageScene('level' + level);
+        Q.stageScene("gameStats", 1);
     }
     Q = Quintus()
         .include("Sprites, Scenes, Input, 2D, Touch, UI")
@@ -77,32 +76,6 @@ Template.game.rendered = function() {
         btnGame.on("click", function() {
             Q.clearStages();
             Q.stageScene('level1');
-            Q.stageScene("gameStats", 1);
-        });
-        box.fit(20);
-    });
-
-    Q.scene('nextLevel', function(stage) {
-        var box = stage.insert(new Q.UI.Container({
-            x: Q.width / 2,
-            y: Q.height / 2,
-            fill: "rgba(0,0,0,0.5)"
-        }));
-
-        var btnGame = box.insert(new Q.UI.Button({
-            x: 0,
-            y: 10,
-            fill: "#CCCCCC",
-            label: "Next level"
-        }))
-        var label = box.insert(new Q.UI.Text({
-            x: 10,
-            y: -10 - btnScores.p.h,
-            label: stage.options.label
-        }));
-        btnGame.on("click", function() {
-            Q.clearStages();
-            Q.stageScene('level' + level);
             Q.stageScene("gameStats", 1);
         });
         box.fit(20);
