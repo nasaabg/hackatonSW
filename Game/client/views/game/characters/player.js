@@ -33,7 +33,10 @@ player = function(){
             if (Q.inputs['right'] && this.p.direction == 'left') {
                 this.p.flip = false;
             }
-            
+            if(this.p.y > 3000){
+                this.destroy();
+                 gameOver(this.p.coins);
+            }
             
         },
         damage: function() {
