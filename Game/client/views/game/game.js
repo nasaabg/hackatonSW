@@ -3,6 +3,7 @@ Template.game.rendered = function() {
     w = $("#game").attr("width");
     h = $("#game").attr("height");
     isAlive = true;
+    levelLoaded = false;
     playerStart = {
         x: 100,
         y: 100
@@ -22,9 +23,12 @@ Template.game.rendered = function() {
         }
     }
     nextLevel = function(points) {
+        if(!levelLoaded){
         level += 1;
         Q.stageScene('level' + level);
         Q.stageScene("gameStats", 1);
+        levelLoaded = true;
+        }
     }
     Q = Quintus()
         .include("Sprites, Scenes, Input, 2D, Touch, UI")
