@@ -28,7 +28,7 @@ Template.game.rendered = function() {
         }).controls().touch();
 
     //load assets
-    Q.load("tiles_map.png, player.png, enemy.png, cup.png, coin.png, level1.tmx", function() {
+    Q.load("tiles_map.png, player.png, enemy.png, cup.png, coin.png, level1.tmx, level2.tmx", function() {
         Q.sheet("tiles", "tiles_map.png", {
             tilew: 70,
             tileh: 70
@@ -40,7 +40,7 @@ Template.game.rendered = function() {
     Q.scene("level1", function(stage) {
         st = stage;
         var background = new Q.TileLayer({
-            dataAsset: 'level1.tmx',
+            dataAsset: 'level2.tmx',
             layerIndex: 0,
             sheet: 'tiles',
             tileW: 70,
@@ -49,7 +49,7 @@ Template.game.rendered = function() {
         });
         stage.insert(background);
         stage.collisionLayer(new Q.TileLayer({
-            dataAsset: 'level1.tmx',
+            dataAsset: 'level2.tmx',
             layerIndex: 1,
             sheet: 'tiles',
             tileW: 70,
