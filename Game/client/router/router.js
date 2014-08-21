@@ -8,11 +8,14 @@ Router.map(function() {
     });
     this.route('game', {
         onBeforeAction: function(pause) {
-            if(!Meteor.loggingIn() && !Meteor.user()){
-                alert("Zaloguj się!");
+            if(!Meteor.user()){
                 pause();   
             }
         }
     });
     this.route('results');
+});
+
+Accounts.ui.config({
+  passwordSignupFields: 'USERNAME_ONLY'
 });

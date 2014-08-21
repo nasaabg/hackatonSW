@@ -23,6 +23,18 @@ enemy = function(){
                     coinsLabel.p.label = 'Points: ' + collision.obj.p.coins;
                 }
             });
-        }
+        },
+        step: function(dt) {
+            if (Q.inputs['left'] && this.p.direction == 'right') {
+                this.p.flip = 'x';
+            }
+            if (Q.inputs['right'] && this.p.direction == 'left') {
+                this.p.flip = false;
+            }
+            if(this.p.y > 3000){
+                this.destroy();
+                 gameOver(this.p.coins);
+            }           
+        },
     });
 }

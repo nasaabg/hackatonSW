@@ -8,7 +8,25 @@ player = function(){
                 jumpSpeed: -500,
                 lives: 3,
                 coins: 0,
-                scale: 0.4
+                beer_mode: {
+                    active: false,
+                    max_scale: 1.5,
+                    inc_scale_interval: false,
+                    dec_scale_interval: false,
+                    inc_scale: function(){
+                        if (player.p.scale <= player.p.beer_mode.max_scale)
+                            player.p.scale += 0.1;
+                        else
+                            player.p.beer_mode.inc_scale_interval = 0;
+                    },
+                    dec_scale: function(){
+                        if (player.p.scale > 1)
+                            player.p.scale -= 0.1;
+                        else
+                            player.p.beer_mode.dec_scale_interval = 0;
+                    },
+                    length: 4000
+                },
             });
             this.add('2d, platformerControls');
 
@@ -25,6 +43,7 @@ player = function(){
                     }
                 });
             });
+
         },
         step: function(dt) {
             if (Q.inputs['left'] && this.p.direction == 'right') {
@@ -32,6 +51,10 @@ player = function(){
             }
             if (Q.inputs['right'] && this.p.direction == 'left') {
                 this.p.flip = false;
+            }
+            if(this.p.y > 3000){
+                this.destroy();
+                 gameOver(this.p.coins);
             }
             
         },
@@ -51,7 +74,39 @@ player = function(){
                 this.p.x = playerStart.x;
                 this.p.y = playerStart.y;
             }
-
+        }, 
+        beer_mode_on: function() {
+            this.p.beer_mode.active = true;
+            this.p.jumpSpeed = -650;
+            this.p.scale = 0.4;
+            this.p.beer_mode.inc_scale_interval = Meteor.setInterval(inc_scale, 100);
+            setTimeout(function(){
+                player.p.beer_mode.dec_scale_interval = Meteor.setInterval(dec_scale, 100);
+            }, this.p.beer_mode.length);
+        },
+        beer_mode_off: function() {
+            this.p.beer_mode.active = false;
+            this.p.jumpSpeed = -500;
+            this.p.scale = 0.4;
         }
     });
+}
+
+
+
+function inc_scale() {
+    if (player.p.scale <= player.p.beer_mode.max_scale)
+        player.p.scale += 0.1;
+    else
+        clearTimeout(player.p.beer_mode.inc_scale_interval);
+}
+
+function dec_scale() {
+    if (player.p.scale > 1)
+        player.p.scale -= 0.1;
+    else
+    {
+        clearTimeout(player.p.beer_mode.dec_scale_interval);
+        player.beer_mode_off();
+    }
 }
