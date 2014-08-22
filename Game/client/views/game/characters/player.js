@@ -44,10 +44,10 @@ player = function(){
                 }
                 this.on("hit.sprite", function(collision) {
                     if (collision.obj.isA("Tower")) {
-                        if(level == 2)
+                        if(level <= 2)
                             nextLevel(this.p.coins);
                         else{
-                            level = 1; 
+                            level = 2; 
                             gameCompleated(this.p.coins);
                         }
                     }
